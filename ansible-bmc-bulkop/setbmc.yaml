@@ -1,0 +1,11 @@
+---
+- hosts: lithium-hp-sl710s
+  become_user: root
+  become: yes
+  gather_facts: True
+  tasks:
+    - name: add bmc user and passwords
+      script: ./setbmc.sh
+      register: out
+    - debug: var=out.stdout_lines
+
